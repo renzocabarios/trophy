@@ -1,18 +1,13 @@
+import "express-async-errors";
 import express from "express";
 import cors from "cors";
 import {
+  ActionError,
   ActionGetResponse,
   ActionPostResponse,
   ActionsJson,
   createPostResponse,
 } from "@solana/actions";
-import {
-  clusterApiUrl,
-  Connection,
-  PublicKey,
-  SystemProgram,
-  Transaction,
-} from "@solana/web3.js";
 import { transferSolTransaction } from "./transactions";
 import { startSession, ClientSession } from "mongoose";
 import userService from "./services";
@@ -87,31 +82,36 @@ If the transaction rejects, your wallet will still be entered. 🤝`,
     const { account } = req.body;
     const session: ClientSession = await startSession();
     let data: any;
-    const transaction = await session
-      .withTransaction(async () => {
-        const transaction = await transferSolTransaction({ from: account });
-        const serviceResponse = await userService.add(
-          { walletAddress: account },
-          session
-        );
-        // data = !Array.isArray(serviceResponse)
-        //   ? [serviceResponse]
-        //   : serviceResponse;
-        data = transaction;
-      })
-      .then(() => {
-        return data;
-      })
-      .finally(() => {
-        session.endSession();
+
+    try {
+      const transaction = await session
+        .withTransaction(async () => {
+          const transaction = await transferSolTransaction({ from: account });
+          const serviceResponse = await userService.add(
+            { walletAddress: account },
+            session
+          );
+
+          data = transaction;
+        })
+        .then(() => {
+          return data;
+        })
+        .finally(() => {
+          session.endSession();
+        });
+      const payload: ActionPostResponse = await createPostResponse({
+        fields: {
+          transaction,
+          message: `It is our first raffle, please be kind. huhu`,
+        },
       });
-
-    const payload: ActionPostResponse = await createPostResponse({
-      fields: {
-        transaction,
-        message: `It is our first raffle, please be kind. huhu`,
-      },
-    });
-
-    res.json(payload);
+      res.json(payload);
+      return;
+    } catch (err: any) {
+      let actionError: ActionError = {
+        message: "You have already joined the raffle",
+      };
+      res.status(400).json(actionError);
+    }
   });
