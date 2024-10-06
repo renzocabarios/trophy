@@ -1,10 +1,10 @@
 "use client";
 
+import Feature from "./components/feature";
 import Footer from "./components/footer";
 import Hero from "./components/hero";
-import Header from "./components/nav";
-import Problem from "./components/problem";
-import Question from "./components/question";
+import Nav from "./components/nav";
+import Questions from "./components/question";
 import Solution from "./components/solution";
 
 
@@ -12,11 +12,11 @@ import Solution from "./components/solution";
 export default function Home() {
   return (
     <main>
-      <Header />
-      <Hero />
-      <Problem />
+      <Nav />
+		  <Hero />
+		  <Feature />
       <Solution />
-      <Question />
+      <Questions />
       <Footer />
     </main>
   );
