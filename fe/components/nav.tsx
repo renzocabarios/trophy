@@ -1,9 +1,9 @@
 "use client";
-import React, { useState } from "react";
 import TrophyIcon from "@/components/icons/trophy";
-import Image from "next/image";
-import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
+import React, { useState } from "react";
+// import Image from "next/image";
 import useMounted from "@/hooks/useMounted";
+import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 
 const Nav: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,12 +22,12 @@ const Nav: React.FC = () => {
           {/* <Logo alt="Logo" className="h-10 w-auto" /> */}
           <TrophyIcon className={"size-20"} />
 
-          <Image
+          {/* <Image
             src={"/assets/icons/authenticity.png"}
             alt=""
             width={200}
             height={200}
-          />
+          /> */}
           {/* <span className="text-white text-lg font-bold">Trophy</span> */}
         </div>
 
