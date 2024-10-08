@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-// import Logo from "/assets/Trophy Icon 2.svg";
+import React, { useState } from "react";
+import TrophyIcon from "@/components/icons/trophy";
+import Image from "next/image";
 
 const Nav: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,15 +15,31 @@ const Nav: React.FC = () => {
         {/* Logo */}
         <div className="flex items-center space-x-2">
           {/* <Logo alt="Logo" className="h-10 w-auto" /> */}
-          <span className="text-white text-lg font-bold">Trophy</span>
+          <TrophyIcon className={"size-20"} />
+
+          <Image
+            src={"/assets/icons/authenticity.png"}
+            alt=""
+            width={200}
+            height={200}
+          />
+          {/* <span className="text-white text-lg font-bold">Trophy</span> */}
         </div>
 
         {/* Navigation Links for Desktop */}
         <div className="hidden md:flex items-center justify-center space-x-4 bg-[#a05b2a] text-white px-6 py-2 rounded-full">
-          <a href="#features" className="hover:text-gray-300">Features</a>
-          <a href="#faqs" className="hover:text-gray-300">FAQs</a>
-          <a href="#discord" className="hover:text-gray-300">Discord</a>
-          <a href="#about" className="hover:text-gray-300">About</a>
+          <a href="#features" className="hover:text-gray-300">
+            Features
+          </a>
+          <a href="#faqs" className="hover:text-gray-300">
+            FAQs
+          </a>
+          <a href="#discord" className="hover:text-gray-300">
+            Discord
+          </a>
+          <a href="#about" className="hover:text-gray-300">
+            About
+          </a>
         </div>
 
         {/* Connect Wallet Button */}
@@ -44,10 +61,18 @@ const Nav: React.FC = () => {
       {/* Mobile Menu */}
       {isOpen && (
         <div className="md:hidden flex flex-col items-center bg-[#5a4634] p-5">
-          <a href="#features" className="text-gray-200 hover:text-white py-2">Features</a>
-          <a href="#faqs" className="text-gray-200 hover:text-white py-2">FAQs</a>
-          <a href="#discord" className="text-gray-200 hover:text-white py-2">Discord</a>
-          <a href="#about" className="text-gray-200 hover:text-white py-2">About</a>
+          <a href="#features" className="text-gray-200 hover:text-white py-2">
+            Features
+          </a>
+          <a href="#faqs" className="text-gray-200 hover:text-white py-2">
+            FAQs
+          </a>
+          <a href="#discord" className="text-gray-200 hover:text-white py-2">
+            Discord
+          </a>
+          <a href="#about" className="text-gray-200 hover:text-white py-2">
+            About
+          </a>
           <a
             href="#connectwallet"
             className="bg-[#a05b2a] text-white px-6 py-2 rounded-full mt-4"

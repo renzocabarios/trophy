@@ -1,4 +1,5 @@
-import React from 'react';
+import React from "react";
+import Image from "next/image";
 
 const Hero: React.FC = () => {
   return (
@@ -9,14 +10,21 @@ const Hero: React.FC = () => {
             The safe way to Giveaway
           </h1>
           <p className="text-xl text-gray-200 mb-7">
-            Decentralization shouldn’t cost you your privacy. Join NFT and crypto giveaways without having to reveal your public key to everyone!
+            Decentralization shouldn’t cost you your privacy. Join NFT and
+            crypto giveaways without having to reveal your public key to
+            everyone!
           </p>
           <button className="bg-[#A86A39] text-white py-3 px-6 rounded-lg hover:bg-[#e0a94f] transition-colors">
             Browse Giveaways
           </button>
         </div>
         <div className="flex justify-center items-center mt-8 md:mt-0 md:ml-8">
-          <img src="/path/to/image.png" alt="Hero Image" className="w-full h-auto max-w-sm md:max-w-full" />
+          {/* <Image src={""}></Image> */}
+          <img
+            src="/path/to/image.png"
+            alt="Hero Image"
+            className="w-full h-auto max-w-sm md:max-w-full"
+          />
         </div>
       </div>
     </section>
