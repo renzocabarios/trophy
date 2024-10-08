@@ -2,7 +2,7 @@ import React from "react";
 
 const Solution: React.FC = () => {
   return (
-    <div className="text-center py-16 px-20 flex flex-col items-center bg-gradient-to-b from-[#a88a4a] to-[#594535]">
+    <div className="text-center py-16 px-20 flex flex-col items-center">
       <h2 className="text-4xl font-semibold mb-10 max-w-[55ch] bg-gradient-to-r from-[#99762E] to-[#FFC54D] bg-clip-text text-transparent drop-shadow-md">
         Our Solution
       </h2>

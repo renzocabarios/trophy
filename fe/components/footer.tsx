@@ -2,8 +2,8 @@ import React from 'react';
 
 const Footer: React.FC = () => {
   return (
-    <div className="bg-gradient-to-b from-[#a88a4a] to-[#594535]">
-      <footer className="bg-[#6C572D] rounded-t-[40px] text-white p-5 flex justify-between flex-wrap">
+    <div>
+      <footer className="rounded-t-[40px] text-white p-5 flex justify-between flex-wrap">
         <div className="flex-1 min-w-[200px] mx-2">
           <h3 className="border-b-2 border-white pb-1 mb-1">Company</h3>
           <ul>

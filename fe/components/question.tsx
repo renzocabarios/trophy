@@ -28,7 +28,7 @@ const Questions: React.FC = () => {
   ];
 
   return (
-    <div className="bg-gradient-to-b from-[#a88a4a] to-[#594535] py-10"> {/* Updated background gradient */}
+    <div className="py-10"> {/* Updated background gradient */}
       <div className="max-w-[800px] mx-auto px-5 text-white pb-20">
         <h2 className="text-3xl font-bold bg-gradient-to-r from-[#99762E] to-[#FFC54D] bg-clip-text text-transparent drop-shadow-lg mb-8">
           FAQs
