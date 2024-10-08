@@ -1,12 +1,13 @@
 "use client";
-import TrophyIcon from "@/components/icons/trophy";
-import React, { useState } from "react";
-// import Image from "next/image";
 import useMounted from "@/hooks/useMounted";
 import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
+import Image from "next/image";
+import { useEffect, useState } from "react";
 
 const Nav: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [showNav, setShowNav] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   const mounted = useMounted();
 
@@ -14,21 +15,57 @@ const Nav: React.FC = () => {
     setIsOpen(!isOpen);
   };
 
+  // Track scroll position to hide/show the nav
+  const handleScroll = () => {
+    const currentScrollY = window.scrollY;
+
+    if (currentScrollY > lastScrollY && currentScrollY > 100) {
+      // Scrolling down and passed 100px from the top
+      setShowNav(false);
+    } else {
+      // Scrolling up
+      setShowNav(true);
+    }
+
+    setLastScrollY(currentScrollY);
+  };
+
+  // Track mouse movement to show the nav when the cursor is near the top
+  const handleMouseMove = (e: MouseEvent) => {
+    if (e.clientY <= 20) {
+      // If the cursor is at the very top of the screen (within 20px)
+      setShowNav(true);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("mousemove", handleMouseMove);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, [lastScrollY]);
+
   return (
-    <nav className="fixed w-full top-0 left-0 right-0 z-50 bg-[#3b2b1e] transition-transform duration-300 ease-in-out">
+    <nav
+      className={`fixed w-full top-0 left-0 right-0 z-50 transition-transform duration-300 ease-in-out ${
+        showNav ? "translate-y-0" : "-translate-y-full"
+      }`}
+    >
       <div className="flex justify-between items-center px-5 py-4 max-w-7xl mx-auto">
         {/* Logo */}
         <div className="flex items-center space-x-2">
-          {/* <Logo alt="Logo" className="h-10 w-auto" /> */}
-          <TrophyIcon className={"size-20"} />
-
-          {/* <Image
-            src={"/assets/icons/authenticity.png"}
-            alt=""
-            width={200}
-            height={200}
-          /> */}
-          {/* <span className="text-white text-lg font-bold">Trophy</span> */}
+          <a href="#home" className="flex items-center text-[#FFC54D] text-[24px] font-semibold">
+            <Image
+              src={"/assets/trophy-icon-1.png"}
+              alt="Trophy Logo"
+              width={36}
+              height={45}
+            />
+            <span className="ml-2">Trophy</span>
+          </a>
         </div>
 
         {/* Navigation Links for Desktop */}
@@ -36,19 +73,15 @@ const Nav: React.FC = () => {
           <a href="#features" className="hover:text-gray-300">
             Features
           </a>
-          <a href="#faqs" className="hover:text-gray-300">
-            FAQs
-          </a>
-          <a href="#discord" className="hover:text-gray-300">
-            Discord
-          </a>
           <a href="#about" className="hover:text-gray-300">
             About
+          </a>
+          <a href="#faqs" className="hover:text-gray-300">
+            FAQs
           </a>
         </div>
 
         {/* Connect Wallet Button */}
-
         <div className="hidden md:flex">{mounted && <WalletMultiButton />}</div>
 
         {/* Hamburger Menu for Mobile */}

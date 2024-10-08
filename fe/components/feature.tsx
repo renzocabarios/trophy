@@ -30,7 +30,7 @@ const features = [
 
 const Feature: React.FC = () => {
   return (
-    <div className="flex flex-col gap-10 py-[6.5rem] px-[13rem]"> {/* feature-container */}
+    <div id="features" className="flex flex-col gap-10 py-[6.5rem] px-[13rem]"> {/* feature-container */}
       {features.map((feature, index) => (
         <div
           key={index}

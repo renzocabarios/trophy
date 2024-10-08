@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React from 'react';
 
 const Footer: React.FC = () => {
@@ -32,8 +33,8 @@ const Footer: React.FC = () => {
         </div>
 
         <div className="flex-1 flex justify-end items-end text-center mx-2">
-          <img src="/path/to/icon.png" alt="Company Logo" className="h-10" />
-          <h2 className="ml-3">Our Company</h2>
+          <Image src="/assets/trophy-icon-1.png" alt="trophy icon" width={36} height={45} />
+          <h2 className="ml-3">Trophy</h2>
         </div>
       </footer>
     </div>

@@ -3,7 +3,7 @@ import InfiniteCarousel from "./infinitecarousel";
 
 const Hero: React.FC = () => {
   return (
-    <section className="flex justify-center items-center py-12 bg-cover bg-center bg-no-repeat h-[80vh]"> {/* hero */}
+    <section id="home" className="h-screen flex justify-center items-center py-12 bg-cover bg-center bg-no-repeat"> {/* hero */}
       <div className="flex items-center justify-between max-w-[1300px] w-full"> {/* hero content */}
         {/* Left column for text */}
         <div className="flex-1 flex flex-col text-[#99762e]"> {/* hero text */}
