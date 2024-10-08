@@ -1,9 +1,14 @@
+"use client";
 import React, { useState } from "react";
 import TrophyIcon from "@/components/icons/trophy";
 import Image from "next/image";
+import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
+import useMounted from "@/hooks/useMounted";
 
 const Nav: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const mounted = useMounted();
 
   const toggleNav = () => {
     setIsOpen(!isOpen);
@@ -43,14 +48,8 @@ const Nav: React.FC = () => {
         </div>
 
         {/* Connect Wallet Button */}
-        <div className="hidden md:flex">
-          <a
-            href="#connectwallet"
-            className="bg-[#a05b2a] text-white px-6 py-2 rounded-full hover:bg-opacity-90 transition"
-          >
-            Connect Wallet
-          </a>
-        </div>
+
+        <div className="hidden md:flex">{mounted && <WalletMultiButton />}</div>
 
         {/* Hamburger Menu for Mobile */}
         <button className="block md:hidden" onClick={toggleNav}>
