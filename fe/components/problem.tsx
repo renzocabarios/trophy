@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const Problem: React.FC = () => {
   return (
@@ -12,12 +12,16 @@ const Problem: React.FC = () => {
 
       {/* Tweet Container */}
       <div className="flex justify-end rounded-lg hover:scale-[1.02] transition-transform">
-        <p className="text-right">"This is a sample tweet or text block to describe a scenario."</p>
+        <p className="text-right">
+          This is a sample tweet or text block to describe a scenario.
+        </p>
       </div>
 
       {/* Risk Section */}
       <div className="self-center">
-        <p className="max-w-[30ch]">Risks associated with not solving this problem include...</p>
+        <p className="max-w-[30ch]">
+          Risks associated with not solving this problem include...
+        </p>
       </div>
 
       {/* Transaction List */}
@@ -32,12 +36,16 @@ const Problem: React.FC = () => {
 
       {/* Additional Text Info */}
       <div className="flex justify-center items-center">
-        <p className="max-w-[35ch]">Additional context or information goes here...</p>
+        <p className="max-w-[35ch]">
+          Additional context or information goes here...
+        </p>
       </div>
 
       {/* Solution Section */}
       <div className="flex justify-center">
-        <p className="text-lg text-[#ffc54d] max-w-[30ch]">Our solution addresses these risks and improves outcomes.</p>
+        <p className="text-lg text-[#ffc54d] max-w-[30ch]">
+          Our solution addresses these risks and improves outcomes.
+        </p>
       </div>
     </div>
   );
